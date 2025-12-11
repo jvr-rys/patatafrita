@@ -28,7 +28,7 @@
               "src/styles.css"
             ],
             "scripts": []
-            "baseHref": "/quiz-ia/"
+            "baseHref": "/patatafrita/"
           },
           "configurations": {
             "production": {
