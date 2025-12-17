@@ -1,0 +1,40 @@
+<div class="quiz-container">
+  
+  <h1>Test de Nivel de IA</h1>
+  
+  <div *ngIf="!doneQuiz" class="question-card">
+    
+    <div class="progress">
+      Pregunta {{ actualQuestion + 1 }} de {{ mQuestions.length }}
+    </div>
+
+    <h2 class="question-text">
+      {{ mQuestions[actualQuestion].statement }}
+    </h2>
+
+    <div class="options-grid">
+      <button 
+        *ngFor="let option of mQuestions[actualQuestion].options" 
+        (click)="answer(option.value)"
+        class="option-btn">
+        {{ option.text }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="doneQuiz" class="result-card">
+    <h2>¡Resultados!</h2>
+    <div class="score-circle">
+      {{ totalScore }} / 40
+    </div>
+    <p class="feedback-text">{{ result }}</p>
+    
+    <button (click)="restart()" class="retry-btn">
+      Intentar de nuevo
+    </button>
+    <br><br> <button routerLink="/" class="home-btn" style="background-color: #666;">
+      Volver al Menú
+    </button>
+  </div>
+
+</div>
