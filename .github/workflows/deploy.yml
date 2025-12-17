@@ -3,7 +3,7 @@ name: Deploy Angular to GitHub Pages
 on:
   push:
     branches:
-      - main  # Se dispara al hacer push a main
+      - main  # Se dispara al hacer push a main jeje
 
 permissions:
   contents: write  # Necesario para gh-pages
