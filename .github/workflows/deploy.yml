@@ -3,32 +3,37 @@ name: Deploy Angular to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # Se dispara al hacer push a main
 
 permissions:
-  contents: write
+  contents: write  # Necesario para gh-pages
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      # 1️⃣ Clonar repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      # 2️⃣ Configurar Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      # 3️⃣ Instalar dependencias
       - name: Install dependencies
         run: npm install
 
+      # 4️⃣ Build Angular app
       - name: Build Angular app
-        run: npm run build -- --base-href /jvr-rys/
+        run: npm run build -- --base-href /jvr-rys/ --configuration production
 
+      # 5️⃣ Deploy a GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist
+          publish_dir: dist/quiz-ia  # Aquí se publica la carpeta correcta generada por Angular
